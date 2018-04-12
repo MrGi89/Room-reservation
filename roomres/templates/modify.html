@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify room</title>
+</head>
+<body>
+    <h1>Edit room: {{ room.name }}</h1>
+    <form action="" method="POST">
+        <label>New name:
+            <input type="text" name="name" value={{ room.name }}>
+        </label>
+        <label>New capacity:
+            <input type="number" name="capacity" value={{ room.capacity }}>
+        </label>
+        <label>Projector availability:
+            <select name="projector">
+                {% if room.projector == True %}
+                    <option value="True">available</option>
+                    <option value="False">not available</option>
+                {% elif room.projector == False %}
+                    <option value="False">not available</option>
+                    <option value="True">available</option>
+                {% endif %}
+            </select>
+        </label>
+        <br>
+        <br>
+        <label>
+            <input type="submit" name='action' value="Back">
+        </label>
+        <label>
+            <input type="submit" name='action' value="Change">
+        </label>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

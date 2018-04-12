@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all rooms</title>
+</head>
+<body>
+    <form action="#" method="GET">
+        <h2 style="margin: auto; padding: 15px 0px">Search:</h2>
+        <label>Name:
+            {% if name is None %}
+                <input type="text" name="name" value="">
+            {% elif name is not None %}
+                <input type="text" name="name" value="{{ name }}">
+            {% endif %}
+        </label>
+        <label>Date:
+            <input type="date" name="date" value="{{ today }}">
+        </label>
+        <label>Minimum capacity:
+            <input type="number" name="capacity" value="{{ capacity }}">
+        </label>
+        <label>Projector availability:
+            <select name="projector">
+                {% if projector == 'all' or projector == None %}
+                    <option value="all">show all</option>
+                    <option value="available">available</option>
+                    <option value="not available">not available</option>
+                {% elif projector == 'available' %}
+                    <option value="available">available</option>
+                    <option value="not available">not available</option>
+                    <option value="all">show all</option>
+                {% elif projector == 'not available' %}
+                    <option value="not available">not available</option>
+                    <option value="available">available</option>
+                    <option value="all">show all</option>
+                {% endif %}
+            </select>
+        </label>
+        <label>
+            <input type="submit" value="search">
+        </label>
+        {% csrf_token %}
+    </form>
+    <br>
+    <a href="/room/new/">Add room</a>
+    <br><br>
+    <hr>
+    <h2 style="margin: auto; padding: 15px 0px">List of rooms:</h2>
+    {% for room in rooms %}
+        <div style="float: left; width: 200px; padding: 10px; border: 2px solid black">
+            <h2>Room: <a href="/room/{{ room.id }}"> {{ room.name }} </a></h2>
+            <h3>Status:
+                  {% if room not in list %}
+                      Available
+                  {% elif room in list %}
+                      Not available
+                  {% endif %}
+            </h3>
+            <a href="/room/modify/{{ room.id }}">Edit</a>
+            <a href="/room/delete/{{ room.id }}">Delete</a>
+        </div>
+    {%  endfor %}
+</body>
+</html>

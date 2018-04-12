@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room details</title>
+</head>
+<body>
+    <h2>Room details</h2>
+    <ul>
+        <li>Name: {{ room.name }}</li>
+        <li>Capacity: {{ room.capacity }}</li>
+        {% if room.projector == True %}
+            <li>Projector: available</li>
+        {% elif room.projector == False %}
+            <li>Projector: not available</li>
+        {% endif %}
+    </ul>
+    <hr>
+    <h2>Not available in days</h2>
+    <ul>
+    {% for date in dates %}
+        <li>{{ date.date }}</li>
+    {% endfor %}
+    </ul>
+    <hr>
+    <h2>Book room</h2>
+    <form action="/reservation/{{ room.id }}" method="POST">
+        <label>Date:
+            <input type="date" name="date">
+        </label>
+        <label>Comment:
+            <input type="text" name="comment">
+        </label>
+        <br><br>
+        <label>
+            <input type="submit" name="action" value="Back">
+        </label>
+        <label>
+            <input type="submit" name="action" value="Book">
+        </label>
+        {% csrf_token %}
+    </form>
+</body>
+</html>
