@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room - reservation</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet.css' %}">
+</head>
+<body>
+<div class="header">
+    <div class="title">
+        <a href="{% url 'show_rooms' %}"><h2>Room - Reservation</h2></a>
+    </div>
+    <div class="nav">
+        <a href="">Profile</a>
+        <a href="">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <div class="menu">
+        <ul>
+            <li><a href="{% url 'show_rooms' %}">SHOW ROOMS</a></li>
+            <li><a href="">ADD ROOM</a></li>
+            <li><a href="">HISTORY</a></li>
+        </ul>
+    </div>
+    {% block inside %}
+        <div class="content">
+            <div class="search-bar">
+
+            </div>
+            {% for room in rooms %}
+                    <div class="room">
+                        <h1><a href="{% url 'show_room' room.pk %}">{{ room.name }}</a></h1>
+                        <div>
+                            <p>Capacity: {{ room.capacity }}</p>
+                            {% if room.projector %}
+                                <p>Projector is available</p>
+                            {% else %}
+                                <p>Projector is not available</p>
+                            {% endif %}
+                            <a href=""><p>Show availability</p></a>
+                        </div>
+                    </div>
+                    <div class="hide">
+                        <div class="options">
+                            wybierz termin
+                        </div>
+                        <div class="availability">
+                            <div>8</div>
+                            <div>9</div>
+                            <div>10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                            <div>16</div>
+                            <div>17</div>
+                            <div>18</div>
+                            <div>19</div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    {% endblock inside %}
+</div>
+<footer>
+
+
+
+</footer>
+</body>
+</html>

@@ -16,16 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 
-from roomres.views import add_room, modify_room, delete_room, show_room, show_rooms, reservation
+from roomres.views import add_room, modify_room, delete_room, show_room, reservation, WelcomeView, \
+    ShowRoomsView, NewRoomView, ShowRoomView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^room/new/$', add_room),
     url(r'^room/modify/(?P<my_id>\d+)$', modify_room),
     url(r'^room/delete/(?P<my_id>\d+)$', delete_room),
-    url(r'^room/(?P<my_id>\d+)$', show_room),
-    url(r'$^', show_rooms),
     url(r'^reservation/(?P<my_id>\d+)$', reservation),
 
+    url(r'^welcome/$', WelcomeView.as_view(), name='welcome'),
+    url(r'^$', ShowRoomsView.as_view(), name='show_rooms'),
+    url(r'^room/new/$', NewRoomView.as_view(), name='new_room'),
+    url(r'^room/(?P<room_pk>\d+)$', ShowRoomView.as_view(), name='show_room'),
 
 ]

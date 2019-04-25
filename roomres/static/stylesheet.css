@@ -1,0 +1,134 @@
+body {
+    display: grid;
+    margin: 0;
+    background-color: white;
+    color: white;
+
+}
+
+h1, h2, ul, li {
+    margin: 0;
+    padding: 0;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.header {
+    background-color: #222831;
+    padding: 10px;
+}
+
+.nav {
+    float:right;
+    margin-top: 5px;
+}
+.nav a{
+    margin-right: 40px;
+}
+
+.title {
+    float:left;
+}
+
+.container {
+    display: grid;
+    min-height: 100px;
+}
+
+.menu {
+    height: 80px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-weight: bolder;
+    background-color: #393E46;
+}
+
+.menu li {
+    display: inline;
+    margin: 0 150px 0 150px;
+
+}
+
+
+.content > div {
+    border-bottom: solid 2px black;
+    color: black;
+}
+
+.search-bar {
+    background-color: lightgray;
+    height: 50px;
+}
+
+.room {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    height: 120px;
+    align-items: center;
+    text-align: center;
+}
+
+.room div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.room a {
+    color: black;
+}
+
+.content-fluid {
+    display: grid;
+    height: 500px;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.form {
+    color: black;
+}
+
+.form input {
+    width: 350px;
+    height: 20px;
+    border-radius: 5px;
+    float: right;
+}
+.form label {
+}
+
+.submit {
+    display: block;
+    clear: right;
+}
+
+.availability {
+    display: grid;
+    height: 50px;
+    grid-template-columns: repeat(12, 1fr);
+}
+.availability div {
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    justify-items: center;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+
+
+
+
+
+

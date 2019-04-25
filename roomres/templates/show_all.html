@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of all rooms</title>
+    <title>Room - reservation</title>
 </head>
 <body>
+
     <form action="#" method="GET">
-        <h2 style="margin: auto; padding: 15px 0px">Search:</h2>
+        <h2>Search:</h2>
         <label>Name:
             {% if name is None %}
                 <input type="text" name="name" value="">
@@ -61,5 +62,6 @@
             <a href="/room/delete/{{ room.id }}">Delete</a>
         </div>
     {%  endfor %}
+
 </body>
 </html>
